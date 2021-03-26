@@ -1,0 +1,216 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css";
+*{
+    font-family: 'Akaya Telivigala', cursive;
+    padding: 0;
+    margin: 0;
+    color: #535353;
+    box-sizing: border-box;
+}
+body{
+    background-color: #ffffff;
+}
+
+div.containerMenu{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    height: 120px;
+    background-color: white;
+    min-width: 1402px;
+}
+
+nav.log_header{
+    width: 100%;
+    height: 40px;
+}
+nav.log_header ul{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+nav.log_header ul li{
+    list-style: none;
+    display: block;
+    float: right;
+    padding: 0 20px 0 20px;
+}
+.border_log{
+    border-left: 1px solid #535353;
+}
+nav.log_header ul li a{
+    text-decoration: none;
+}
+nav.log_header ul li a:hover{
+    color: crimson;
+}
+nav.menu_header{
+    position: relative;
+    width: 100%;
+    height: 80px;
+}
+nav.menu_header ul{
+    position: absolute;
+    right: 100px;
+    float: right;
+    list-style: none;
+}
+nav.menu_header ul li{
+    float: right;
+    padding: 0 100px 0 100px;
+
+}
+nav.menu_header ul li a{
+    text-decoration: none;
+    font-size: 20px;
+}
+nav.menu_header ul li a:hover{
+    color: crimson;
+}
+#logo{
+    display: inline;
+    position: absolute;
+    height: 100px;
+    top: -40px;
+    left: 20;
+
+}
+#searchicon{
+    display: inline;
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    height: 30px;
+}
+div.divider{
+    position: fixed;
+    width: 100%;
+    background-image: linear-gradient(to right,#491f1b,#51351e);
+}
+nav.catigoTree{
+    background-color: #ffffff;
+    width: 100%;
+    height: 60px;
+    display: block;
+    position: relative;
+    float: left;
+    top: 200px;
+    z-index: 0;
+    margin-top: 10px;
+    margin-left: 40px;
+    position: fixed;
+    width: 120px;
+    margin-right: 20px;
+}
+nav.catigoTree h2{
+    margin-bottom: 5px;
+
+}
+nav.catigoTree ul{
+    display: inline-block;
+}
+nav.catigoTree ul li{
+    padding: 8px;
+    list-style: none;
+}
+nav.catigoTree ul li a{
+    text-decoration: none;
+    font-size: 16px;
+}
+nav.catigoTree ul li a span{
+    padding-right: 30px;
+}
+nav.catigoTree ul li a span img{
+    display: block;
+    position: absolute;
+    height: 20px;
+}
+.ItemsContainerHolder{
+    width: 80%;
+    height: auto;
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    right: 60px;
+    top: 200px;
+    border: 1px solid black;
+    float: left;
+}
+ .containerItems{
+     min-height: 200px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 40px;
+     width: 600px;
+ }
+ .card{
+     display: flex;
+     justify-content: center;
+     object-fit: cover;
+     align-items: center;
+     overflow: hidden;
+     max-height: 300px;
+     max-width: 200px;
+ }
+ .info{
+     max-height: 300px;
+     max-width: 400px;
+     background-color: #ffddcd;
+     border-radius: 20px;
+     padding: 15px 20px;
+     box-shadow: 15px 0 35px rgba(0,0,0,0.1),
+     0 -15px 35px rgba(0,0,0,0.1),
+     0px 15 35px rgba(0,0,0,0.1);
+ }
+ .itemName{
+     display: flex;
+     align-items: center;
+     padding: 0 0 10px 0;
+ }
+.big{
+     margin-right: 10px;
+     font-size: 2rem;
+     color:#333;
+ }
+.new{
+     background-color: #aa0000;
+     text-transform: uppercase;
+     color: white;
+     padding: 3px 10px;
+     border-radius: 5px;
+ }
+.small{
+    font-weight: 500;
+    color: #444;
+    margin-top: 3px;
+    text-transform: capitalize;
+}
+.itemName, .description, .size-container{
+    padding-top: 5px;
+    border-bottom: 1px solid white;
+}
+.title{
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.text{
+    font-size: 17px;
+}
+.sizes{
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+}
+.size{
+    width:30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: white;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}

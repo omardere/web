@@ -1,0 +1,52 @@
+*{
+    font-family: 'Akaya Telivigala', cursive;
+    padding: 0;
+    margin: 0;
+    color: #535353;
+}
+body{
+    background-color: #ffffff;
+    min-width: 1512px;
+}
+.header{
+    position: fixed;
+    width: 100%;
+    top: 140px;
+    height: 130px;
+    background: url(../image/fas.jpg);
+    background-size:cover ;
+    font-family: 'Shippori Mincho', serif;
+
+}
+.header h1{
+    font-size: 30px;
+    color: chocolate;
+    text-align: center;
+    position: relative;
+    margin-top: 10px;
+}
+.header p{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+
+}
+.middle{
+    position: absolute;
+    top: 290px;
+    width: 50%;
+    margin-left: 40px;
+}
+.botom{
+    position: fixed;
+    height: 22px;
+    background: url(../image/fas.jpg);
+    background-size:cover ;
+    font-family: 'Shippori Mincho', serif;
+    bottom: 0;
+    width: 100%;
+}
+.botom p{
+    margin-left: 35%;
+
+}
