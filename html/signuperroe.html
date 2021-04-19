@@ -7,29 +7,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
     <script src="../js/signin.js"></script>
+    <style>
+       #box2 {
+            display: block;
+           margin-top: 22px;
+        }
+        #box1{
+            display: none;
+
+        }
+    </style>
 </head>
 <body >
 
-    <div id="but" class="btun">
-      <button onclick="login()" id="b1" class="btn" name="Login">Login</button>
-         <button onclick="signup()" id="b2" class="btn" name="signup">Signup</button>
-    </div>
-    <form id="signi" method="post" action="../login.php" enctype="multipart/form-data">
-<div id="box1" class="login_box">
+<div id="but" class="btun">
+    <button onclick="login()" id="b1" class="btn" name="Login">Login</button>
+    <button onclick="signup()" id="b2" class="btn" name="signup">Signup</button>
+</div>
+<form id="signi" method="post" action="../login.php" enctype="multipart/form-data">
+    <div id="box1" class="login_box">
 
-<h1>Login</h1>
-<div class="text">
-    <i class="fa fa-user fa-customize" aria-hidden="true"></i>
-    <input required type="email" placeholder="Email" name="email">
-</div>
-<div class="text">
-    <i class="fa fa-lock fa-customize"  aria-hidden="true"></i>
-    <input required type="password" placeholder="Password" name="pass">
-</div>
-    <div class="btn">
-<input type="submit" style="width: 280px" value="Login" class="Log" name="login">
+        <h1>Login</h1>
+        <div class="text">
+            <i class="fa fa-user fa-customize" aria-hidden="true"></i>
+            <input required type="email" placeholder="Email" name="email">
+        </div>
+        <div class="text">
+            <i class="fa fa-lock fa-customize"  aria-hidden="true"></i>
+            <input required type="password" placeholder="Password" name="pass">
+        </div>
+        <div class="btn">
+            <input type="submit" style="width: 280px" value="Login" class="Log" name="login">
+        </div>
     </div>
-</div>
 </form>
 <form id="signu" method="post" action="../signup.php" enctype="multipart/form-data">
 
@@ -77,9 +87,12 @@
         <div class="btn">
             <input type="submit" value="Signup" class="sig" name="signup">
         </div>
+        <div>
+            <p style="color: red"> this email used,chose another email</p>
+        </div>
 
 
     </div>
-    </form>
+</form>
 </body>
 </html>
