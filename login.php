@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['email'])&&isset($_POST['pass']))
 {
-$not=0;
+    $not=0;
     $email=$_POST['email'];
     $pass=$_POST['pass'];
 
@@ -13,10 +13,11 @@ $not=0;
         {
 
             $row= $res->fetch_assoc();//fetch new row
-            if($row['email']==$email&&$row['pass']==sha1($pass))
+            if($row['email']==$email&&($row['pass']==sha1($pass)))
             {
                 header('Location:html/home.html');
                 $not=0;
+                break;
             }
             else{
                 $not=1;
