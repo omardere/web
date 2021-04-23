@@ -15,7 +15,7 @@ if(isset($_POST['email'])&&isset($_POST['pass']))
             $row= $res->fetch_assoc();//fetch new row
             if($row['email']==$email&&($row['pass']==sha1($pass)))
             {
-                header('Location:html/home.html');
+                header('Location:html/home.php');
                 $not=0;
                 break;
             }

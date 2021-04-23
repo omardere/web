@@ -71,7 +71,7 @@ nav.menu_header ul li a:hover{
     position: absolute;
     height: 100px;
     top: -40px;
-    left: 20;
+    left: 20px;
 
 }
 #searchicon{
@@ -89,59 +89,53 @@ div.divider{
 nav.catigoTree{
     background-color: #ffffff;
     width: 100%;
-    height: 60px;
-    display: block;
-    position: relative;
-    float: left;
+    height: fit-content;
+    display: flex;;
+    flex-flow: column;
     top: 200px;
     z-index: 0;
     margin-top: 10px;
     margin-left: 40px;
     position: fixed;
-    width: 120px;
-    margin-right: 20px;
+    width: 150px;
 }
 nav.catigoTree h2{
     margin-bottom: 5px;
 
 }
-nav.catigoTree ul{
-    display: inline-block;
+nav.catigoTree button{
+    display: flex;
+    flex-flow: row;
+    padding: 15px 20px;
+    left: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
 }
-nav.catigoTree ul li{
-    padding: 8px;
-    list-style: none;
-}
-nav.catigoTree ul li a{
-    text-decoration: none;
-    font-size: 16px;
-}
-nav.catigoTree ul li a span{
-    padding-right: 30px;
-}
-nav.catigoTree ul li a span img{
-    display: block;
-    position: absolute;
-    height: 20px;
+nav.catigoTree button img{
+    height: 15px;
 }
 .ItemsContainerHolder{
     width: 80%;
     height: auto;
     display: flex;
     position: absolute;
+    flex-wrap: wrap;
     flex-direction: row;
     right: 60px;
     top: 200px;
     border: 1px solid black;
-    float: left;
 }
  .containerItems{
      min-height: 200px;
      display: flex;
+     flex-grow: 1;
+     width: 33%;
      justify-content: center;
      align-items: center;
      padding: 40px;
-     width: 600px;
  }
  .card{
      display: flex;
@@ -149,27 +143,29 @@ nav.catigoTree ul li a span img{
      object-fit: cover;
      align-items: center;
      overflow: hidden;
-     max-height: 300px;
-     max-width: 200px;
+     max-height: 400px;
+     max-width: 250px;
+     margin: 0 10px;
  }
  .info{
+     display: flex;
+     flex-flow: column;
      max-height: 300px;
      max-width: 400px;
      background-color: #ffddcd;
      border-radius: 20px;
      padding: 15px 20px;
-     box-shadow: 15px 0 35px rgba(0,0,0,0.1),
-     0 -15px 35px rgba(0,0,0,0.1),
-     0px 15 35px rgba(0,0,0,0.1);
+     box-shadow: 15px 0 35px rgba(0,0,0,0.1), 0 -15px 35px rgba(0,0,0,0.1), 0 15px 35px rgba(0,0,0,0.1);
  }
  .itemName{
      display: flex;
+     flex-flow: row;
      align-items: center;
      padding: 0 0 10px 0;
  }
 .big{
      margin-right: 10px;
-     font-size: 2rem;
+     font-size: 20px;
      color:#333;
  }
 .new{
@@ -185,9 +181,13 @@ nav.catigoTree ul li a span img{
     margin-top: 3px;
     text-transform: capitalize;
 }
-.itemName, .description, .size-container{
+.itemName, .size-container{
+    display: flex;
     padding-top: 5px;
     border-bottom: 1px solid white;
+}
+.size-container{
+    flex-flow: column;
 }
 .title{
     font-weight: 600;
@@ -195,7 +195,7 @@ nav.catigoTree ul li a span img{
     text-transform: uppercase;
 }
 .text{
-    font-size: 17px;
+    font-size: 1rem;
 }
 .sizes{
     padding: 8px 0;
@@ -203,7 +203,7 @@ nav.catigoTree ul li a span img{
     align-items: center;
 }
 .size{
-    width:30px;
+    width:150px;
     height: 30px;
     border-radius: 5px;
     background-color: white;
@@ -213,4 +213,20 @@ nav.catigoTree ul li a span img{
     font-size: 1.1rem;
     font-weight: 500;
     cursor: pointer;
+}
+.buy-price{
+    display: flex;
+    flex-flow: row;
+    margin: 10px 0;
+}
+.price{
+    display: inline-flex;
+    padding: 0 5px;
+    background-color: white;
+    border-radius: 20%;
+    margin: 0 5px;
+}
+.item{
+    height: 100%;
+    width: 100%;
 }
