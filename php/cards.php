@@ -20,7 +20,7 @@
                         <a href="#" class="buy"><i class=" fas fa-shopping-cart"></i>Add to card</a>
                         <div class="price">
                             <i class="fas fa-nis-sign"></i>
-                            <h3>'.$price.'</h3>
+                            <h3>$'.$price.'</h3>
                         </div>
                     </div>
                 </div>

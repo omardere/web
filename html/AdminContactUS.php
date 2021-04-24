@@ -22,37 +22,8 @@
     </style>
 </head>
 <body>
-<div class="containerMenu">
-    <nav class="log_header">
-        <ul>
-            <li class="border_log">
-                <a href="signup.html">Sign Up</a>
-            </li>
-            <li>
-                <a href="index.html">Log In</a>
-            </li>
-        </ul>
-    </nav>
-    <nav class="menu_header">
-        <img id="searchicon" src="../image/SearchIcon.png">,
-        <ul>
-            <li>
-                <a href="contactus.html">Contact Us</a>
-            </li>
-            <li>
-                <a href="aboutus.html">About Us</a>
-            </li>
-            <li>
-                <a href="cart.html">Cart</a>
-            </li>
-            <li>
-                <a href="home.php">Home</a>
-            </li>
-        </ul>
-        <img id="logo" src="../image/LogoIcon.png"/>
-    </nav>
-    <div class="divider">.</div>
-</div>
+<?php include "../php/header.php"; ?>
+
 <section class="contact">
     <div class="content">
         <h1> Contact US</h1>
