@@ -19,6 +19,7 @@ div.containerMenu{
     height: 120px;
     background-color: white;
     min-width: 1402px;
+    padding: 50px 0;
 }
 
 nav.log_header{
@@ -49,6 +50,7 @@ nav.menu_header{
     position: relative;
     width: 100%;
     height: 80px;
+    top: 10px;
 }
 nav.menu_header ul{
     position: absolute;
@@ -75,8 +77,8 @@ nav.menu_header ul li a:hover{
 }
 div.divider{
     position: absolute;
-    bottom: 0;
     width: 100%;
+    top: 120px;
     background-image: linear-gradient(to right,#491f1b,#51351e);
 }
 nav.catigoTree{
@@ -214,7 +216,7 @@ nav.catigoTree button img{
 }
 .price{
     display: inline-flex;
-    padding: 5px 5px;
+    padding: 0 5px;
     background-color: white;
     border-radius: 20%;
     margin: 0 5px;
@@ -235,6 +237,8 @@ nav.catigoTree button img{
     text-align: center;
     border-radius: 20px;
     cursor: pointer;
+    top: 10px;
+    margin: -5px;
 }
 #acart{
     display: flex;
