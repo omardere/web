@@ -253,3 +253,8 @@ nav.catigoTree button img{
     padding-bottom: 10px;
     padding-right: 5px;
 }
+.buy{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
