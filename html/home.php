@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
-    <?php include "../php/header.php"; ?>
+<?php include "../php/header.php"; ?>
     <form action="home.php" method="POST">
         <nav class="catigoTree">
             <h2>Catigories</h2>
@@ -23,8 +23,8 @@
     </form>
     <div class="ItemsContainerHolder">
         <?php
+        session_start();
                try {
-
                    if(isset($_POST['cat_btn'])) {
                        if (isset($_SESSION['catigory_selected'])) {
                            $count = count($_SESSION['catigory_selected']) - 1;
@@ -53,6 +53,7 @@
                            }
                        }
                    }
+                   print_r($_SESSION['cart']);
                     $db->close();
                 }catch (Exception $e){}
         ?>

@@ -20,7 +20,16 @@
             <ul>
                 <li>
                     <div class="cart_menu">
-                        <a id="acart" href="../html/cart.php"><img class="cart_image" src="../image/cart.png"> Cart (0) </a>
+                        <a id="acart" href="../html/cart.php"><img class="cart_image" src="../image/cart.png"> Cart <?php
+                            session_start();
+                            if(isset($_SESSION['cart'])){
+                                $count = count($_SESSION['cart']);
+                                echo '('.$count.')';
+                            }
+                            else{
+                                echo "(0)";
+                            }
+                            ?> </a>
                     </div>
                 </li>
                 <li>
