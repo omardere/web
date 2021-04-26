@@ -53,7 +53,6 @@
                            }
                        }
                    }
-                   print_r($_SESSION['cart']);
                     $db->close();
                 }catch (Exception $e){}
         ?>

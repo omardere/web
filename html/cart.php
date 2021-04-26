@@ -36,6 +36,7 @@ include "../php/cart_cards.php";
                 foreach ($_SESSION['cart'] as $key => $value) {
                     if ($value['Item_ID'] == $_GET['id']) {
                         unset($_SESSION['cart'][$key]);
+                        $_SESSION['cart'] = array_values($_SESSION['cart']);
                         echo "<script>
                                 alert('Product has been Removed....!');
                                 window.location = 'cart.php';
