@@ -1,6 +1,6 @@
 <?php
 
-function get_cards_cart($name, $price, $size, $proimage, $product_ID){
+function get_cards_cart($name, $price, $size, $proimage, $product_ID, $product_quantity=1){
     $item = '
     <div class="containerItemsCart">
         <div class="card">
@@ -26,13 +26,18 @@ function get_cards_cart($name, $price, $size, $proimage, $product_ID){
                     </div>
                 </div>
             </div>
-        <form action="../html/cart.php?action=remove&id='.$product_ID.'" method="post">
+        
         <div class="controls">
-            <button class="bt1" name="remove">Remove</button>
-            <input type="hidden" name="Item_ID" value="'.$product_ID.'">
-            <button class="bt">&#9650;</button>
-            <span>Quantity: 0</span>
-            <button class="bt">&#9660;</button>
+            <form action="../html/cart.php?action=remove&id='.$product_ID.'" method="post">
+                <button class="bt1" name="remove">Remove</button>
+                <input type="hidden" name="Item_ID" value="'.$product_ID.'">
+            </form>
+            <form action="../html/cart.php" method="post">
+                <button class="bt" name="increase_quantity">&#9650;</button>
+                <span>Quantity: '.$product_quantity.'</span>
+                <input type="hidden" name="product_quantity" value="'.$product_ID.'">
+                <button class="bt" name="dicrease_quantity">&#9660;</button>
+            </form>
         </div>
         </form>
     </div>

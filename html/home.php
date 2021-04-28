@@ -42,14 +42,14 @@
                    if($catigory_selected == "all") {
                        for ($i = 0; $i < $res->num_rows; $i++) {
                            $row = $res->fetch_assoc();//fetch new row
-                           component($row['name'], $row['price'], $row['size'], $row['image'], $row['id']);
+                           component($row['name'], $row['price'], $row['size'], $row['image'], $row['id'], $row['quantites']);
 
                        }
                    }else{
                        for ($i = 0; $i < $res->num_rows; $i++) {
                            $row = $res->fetch_assoc();//fetch new row
                            if($catigory_selected == $row["catigories"]) {
-                               component($row['name'], $row['price'], $row['size'], $row['image'], $row['id']);
+                               component($row['name'], $row['price'], $row['size'], $row['image'], $row['id'], $row['quantites']);
                            }
                        }
                    }

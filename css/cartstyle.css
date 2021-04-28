@@ -27,13 +27,14 @@
 
 }
 .bt1{
-    padding: 15px 0;
+    padding: 20px 3rem;
     border-radius: 50px;
     background-color: #faaf8f;
     color: white;
     font-size: 20px;
     text-align: center;
     cursor: pointer;
+    margin-left: 15%;
 }
 .bt1:hover{
     background-color: #ffddcd;
