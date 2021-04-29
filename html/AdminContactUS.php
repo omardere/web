@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-<?php include "../php/header.php"; ?>
+<?php include "../php/AdminHeader.php"; ?>
 
 <section class="contact">
     <div class="content">

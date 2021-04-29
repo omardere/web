@@ -68,38 +68,7 @@ include "../php/cart_cards.php";
 </body>
 </html>
 <?php
-if ($_SERVER["REQUEST_METHOD"]=="POST") {
-    if (isset($_POST["increase_quantity"])){
-        if (isset($_SESSION['cart'])){
-            foreach ($_SESSION['cart'] as $id => $value){
-                if ($_POST['product_quantity'] == $value['Item_ID']) {
-                    if ($value['product_Total_quantity'] > 0) {
-                        $value['product_quantity'] += 1;
-                        $value['product_Total_quantity']-=1;
-                        $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
-                        echo "<script>window.location = 'cart.php'</script>";
-                    } else {
-                        echo '<script>alert("No enough items in the store."; window.location = "cart.php";</script>';
-                    }
-                }
-            }
-        }
-    }
-    elseif (isset($_POST["dicrease_quantity"])){
-        if (isset($_SESSION['cart'])){
-            foreach ($_SESSION['cart'] as $id => $value){
-                if ($_POST['product_quantity'] == $value['Item_ID']){
-                    if (1 < $value['product_quantity']){
-                        $value['product_quantity'] -= 1;
-                        $value['product_Total_quantity']+=1;
-                        $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
-                        echo "<script>window.location = 'cart.php'</script>";
-                    }
-                }
-            }
-        }
-    }
-    elseif (isset($_POST["Add_To_Cart"])) {
+    if (isset($_POST["Add_To_Cart"])) {
         if (isset($_SESSION['cart'])){
             $my_Itmes = array_column($_SESSION['cart'], 'Item_ID');
             if (in_array($_POST['Item_ID'] ,$my_Itmes)) {
@@ -131,6 +100,37 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 ";
         }
     }
+
+    elseif (isset($_POST["dicrease_quantity"])){
+        if (isset($_SESSION['cart'])){
+            foreach ($_SESSION['cart'] as $id => $value){
+                if ($_POST['product_quantity'] == $value['Item_ID']){
+                    if (1 < $value['product_quantity']){
+                        $value['product_quantity'] -= 1;
+                        $value['product_Total_quantity']+=1;
+                        $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
+                        echo "<script>window.location = 'cart.php'</script>";
+                    }
+                }
+            }
+        }
+    }
+    elseif (isset($_POST["increase_quantity"])){
+        if (isset($_SESSION['cart'])){
+            foreach ($_SESSION['cart'] as $id => $value){
+                if ($_POST['product_quantity'] == $value['Item_ID']) {
+                    if ($value['product_Total_quantity'] > 0) {
+                        $value['product_quantity'] += 1;
+                        $value['product_Total_quantity']-=1;
+                        $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
+                        echo "<script>window.location = 'cart.php'</script>";
+                    } else {
+                        echo '<script>alert("No enough items in the store."; window.location = "cart.php";</script>';
+                    }
+                }
+            }
+        }
+    }
     if (isset($_POST['buy'])){
         $db=new mysqli('localhost','root','','fashion');
         $q="select * from item";
@@ -142,10 +142,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                     $db->query($sql);
                     unset($_SESSION['cart'][$id]);
                     $_SESSION['cart'] = array_values($_SESSION['cart']);
-                    echo "<script>window.location = 'cart.php'</script>";
+                    echo "<script>window.location = 'home.php'</script>";
                 }
             }
         }
     }
-}
 ?>
