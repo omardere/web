@@ -15,6 +15,12 @@ if(isset($_POST['email'])&&isset($_POST['pass']))
             $row= $res->fetch_assoc();//fetch new row
             if($row['email']==$email&&($row['pass']==sha1($pass)))
             {
+                if(($row['email']=='fashion_store@gmail.com')&&($row['pass']==sha1('admin')))
+                {
+                    header('Location:html/AdminHome.php');
+                    $not=0;
+                    break;
+                }
                 header('Location:html/home.php');
                 $not=0;
                 break;
@@ -26,6 +32,7 @@ if(isset($_POST['email'])&&isset($_POST['pass']))
         }
 
         $db->close();
+
         if($not==1)
         {
             header('Location:html/loginerrore.html');
