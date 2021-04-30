@@ -18,7 +18,7 @@ if(isset($_POST['fname'])&&isset($_POST['lname'])&&isset($_POST['email'])&&isset
 
         if($res==1)
         {
-            header('Location:html/index.html');
+            header('Location:html/log_in_sign_up.html');
         }
         else{
             /*

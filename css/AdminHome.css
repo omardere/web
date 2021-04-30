@@ -353,7 +353,7 @@ div.divider {
     justify-items: center;
     align-content: center;
     height: fit-content;
-    width: 250px;
+    width: 300px;
 }
 .add{
     padding: 20px 60px;
@@ -370,4 +370,15 @@ div.divider {
     margin-left: 20%;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+input{
+    cursor: pointer;
+}
+.rad{
+    display: flex;
+    flex-flow: row;
+    margin: 5px ;
+}
+.rad label{
+    margin: 0 5px;
 }

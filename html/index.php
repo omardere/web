@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php include "../php/header.php"; ?>
-    <form action="home.php" method="POST">
+    <form action="index.php" method="POST">
         <nav class="catigoTree">
             <h2>Catigories</h2>
                 <button name="cat_btn" value="all" ><span><img src="../image/RArrow.png"></span> All</button>
@@ -25,6 +25,23 @@
         <?php
         session_start();
                try {
+                   if (isset($_POST["Add_To_Cart"])) {
+                       if (isset($_SESSION['cart'])){
+                           $my_Itmes = array_column($_SESSION['cart'], 'Item_ID');
+                           if (in_array($_POST['Item_ID'] ,$my_Itmes)) {
+                               echo '<script>window.location = "index.php";</script>';
+                           }else{
+                               $totquan = $_POST['product_Total_quantity'] - 1;
+                               $count = count($_SESSION['cart']);
+                               $_SESSION['cart'][$count]=array('Item_ID'=>$_POST['Item_ID'], 'product_quantity'=>1, 'product_Total_quantity'=> $totquan);
+                               echo '<script>window.location = "index.php";</script>';
+                           }
+                       }else{
+                           $totquan = $_POST['product_Total_quantity'] - 1;
+                           $_SESSION['cart'][0]=array('Item_ID'=>$_POST['Item_ID'], 'product_quantity'=>1, 'product_Total_quantity'=>$totquan);
+                           echo '<script>window.location = "index.php";</script>';
+                       }
+                   }
                    if(isset($_POST['cat_btn'])) {
                        if (isset($_SESSION['catigory_selected'])) {
                            $count = count($_SESSION['catigory_selected']) - 1;

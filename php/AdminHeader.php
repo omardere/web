@@ -9,10 +9,10 @@
     <nav class="log_header">
         <ul>
             <li class="border_log">
-                <a href="signup.html">Sign Up</a>
+                <a href="log_in_sign_up.html">Sign Up</a>
             </li>
             <li>
-                <a href="index.html">Log In</a>
+                <a href="log_in_sign_up.html">Log In</a>
             </li>
         </ul>
     </nav>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,20 +16,23 @@ include "../php/cart_cards.php";
     <?php
     $total = 0;
     if(isset($_SESSION['cart'])){
-        $db=new mysqli('localhost','root','','fashion');
-        $q="select * from item";
-        $res=$db->query($q);//pointer of rows
-        while ($row = $res->fetch_assoc()){
-            foreach ($_SESSION['cart'] as $id => $value){
-                if ($row['id'] == $value['Item_ID']){
-                    get_cards_cart($row['name'], $row['price'], $row['size'], $row['image'], $row['id'], $value['product_quantity']);
-                    $total += $row['price'] * $value['product_quantity'];
-
+        if (count($_SESSION['cart']) == 0){
+            echo "<h3 style='text-align: center;'>Cart is Empty.</h3>";
+        }
+        else {
+            $db = new mysqli('localhost', 'root', '', 'fashion');
+            $q = "select * from item";
+            $res = $db->query($q);//pointer of rows
+            while ($row = $res->fetch_assoc()) {
+                foreach ($_SESSION['cart'] as $id => $value) {
+                    if ($row['id'] == $value['Item_ID']) {
+                        get_cards_cart($row['name'], $row['price'], $row['size'], $row['image'], $row['id'], $value['product_quantity']);
+                        $total += $row['price'] * $value['product_quantity'];
+                    }
                 }
             }
+            $db->close();
         }
-    }if (count($_SESSION['cart']) == 0){
-        echo "<h3 style='text-align: center;'>Cart is Empty.</h3>";
     }
 
     if (isset($_POST["remove"])) {
@@ -45,14 +46,13 @@ include "../php/cart_cards.php";
                         $_SESSION['cart'][$key] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => 1, 'product_Total_quantity' => $row['quantites']);
                         unset($_SESSION['cart'][$key]);
                         $_SESSION['cart'] = array_values($_SESSION['cart']);
-                        echo "<script>
-                                    alert('Product has been Removed....!');
-                                    window.location = 'cart.php';
-                                </script>";
                     }
                 }
             }
+            echo '<script>window.location = "cart.php";</script>';
+            $db->close();
         }
+
     }
     ?>
 </div>
@@ -68,40 +68,9 @@ include "../php/cart_cards.php";
 </body>
 </html>
 <?php
-    if (isset($_POST["Add_To_Cart"])) {
-        if (isset($_SESSION['cart'])){
-            $my_Itmes = array_column($_SESSION['cart'], 'Item_ID');
-            if (in_array($_POST['Item_ID'] ,$my_Itmes)) {
-                echo "
-                    <script>
-                        alert('Item already added 1');
-                        window.location='home.php';
-                    </script>
-                ";
-            }else{
-                $totquan = $_POST['product_Total_quantity'] - 1;
-                $count = count($_SESSION['cart']);
-                $_SESSION['cart'][$count]=array('Item_ID'=>$_POST['Item_ID'], 'product_quantity'=>1, 'product_Total_quantity'=> $totquan);
-                echo "
-                    <script>
-                        alert('Item added 2');
-                        window.location='home.php';
-                    </script>
-                ";
-            }
-        }else{
-            $totquan = $_POST['product_Total_quantity'] - 1;
-            $_SESSION['cart'][0]=array('Item_ID'=>$_POST['Item_ID'], 'product_quantity'=>1, 'product_Total_quantity'=>$totquan);
-            echo "
-                    <script>
-                        alert('Item added 3');
-                        window.location='home.php';
-                    </script>
-                ";
-        }
-    }
 
-    elseif (isset($_POST["dicrease_quantity"])){
+
+    if (isset($_POST["dicrease_quantity"])){
         if (isset($_SESSION['cart'])){
             foreach ($_SESSION['cart'] as $id => $value){
                 if ($_POST['product_quantity'] == $value['Item_ID']){
@@ -109,10 +78,11 @@ include "../php/cart_cards.php";
                         $value['product_quantity'] -= 1;
                         $value['product_Total_quantity']+=1;
                         $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
-                        echo "<script>window.location = 'cart.php'</script>";
+
                     }
                 }
             }
+            echo '<script>window.location = "cart.php";</script>';
         }
     }
     elseif (isset($_POST["increase_quantity"])){
@@ -123,9 +93,10 @@ include "../php/cart_cards.php";
                         $value['product_quantity'] += 1;
                         $value['product_Total_quantity']-=1;
                         $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
-                        echo "<script>window.location = 'cart.php'</script>";
+                        echo '<script>window.location = "cart.php";</script>';
                     } else {
-                        echo '<script>alert("No enough items in the store."; window.location = "cart.php";</script>';
+                        echo '<script>alert("No enough items in the store.";</script>';
+                        echo '<script>window.location = "cart.php";</script>';
                     }
                 }
             }
@@ -142,9 +113,10 @@ include "../php/cart_cards.php";
                     $db->query($sql);
                     unset($_SESSION['cart'][$id]);
                     $_SESSION['cart'] = array_values($_SESSION['cart']);
-                    echo "<script>window.location = 'home.php'</script>";
                 }
             }
         }
+        echo '<script>window.location = "index.php";</script>';
+        $db->close();
     }
 ?>

@@ -9,10 +9,10 @@
         <nav class="log_header">
             <ul>
                 <li class="border_log">
-                    <a href="signup.html">Sign Up</a>
+                    <a href="log_in_sign_up.html">Sign Up</a>
                 </li>
                 <li>
-                    <a href="index.html">Log In</a>
+                    <a href="log_in_sign_up.html">Log In</a>
                 </li>
             </ul>
         </nav>
@@ -36,13 +36,13 @@
                     <a href="contactus.php">Contact Us</a>
                 </li>
                 <li>
-                    <a href="aboutus.html">About Us</a>
+                    <a href="aboutus.php">About Us</a>
                 </li>
                 <li>
                     <a href="cart.php">Cart</a>
                 </li>
                 <li>
-                    <a href="home.php">Home</a>
+                    <a href="index.php">Home</a>
                 </li>
             </ul>
             <img id="logo" src="../image/LogoIcon.png"/>

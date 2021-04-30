@@ -21,7 +21,7 @@ if(isset($_POST['email'])&&isset($_POST['pass']))
                     $not=0;
                     break;
                 }
-                header('Location:html/home.php');
+                header('Location:html/index.php');
                 $not=0;
                 break;
             }
