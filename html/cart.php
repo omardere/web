@@ -119,6 +119,7 @@ include "../php/cart_cards.php";
         $q="select * from item";
         $res2=$db->query($q);//pointer of rows
         $email = array_column($_SESSION['User'],"email");
+        $sDate = date("Y-m-d H:i:s");
         if (isset($_SESSION['User'])){
             if (count($_SESSION['User']) == 1){
                 while ($row = $res2->fetch_assoc()) {
@@ -126,19 +127,24 @@ include "../php/cart_cards.php";
                         if ($row['id'] == $value['Item_ID']){
                             $sql = "UPDATE item SET  `quantites`= ".$value['product_Total_quantity']." WHERE id = ".$value['Item_ID'];
                             $db->query($sql);
-                            $sqlorder = "INSERT INTO `user_order`(`item_id`, `user_email`, `date`) VALUES ('".$value['Item_ID']."', '".$email[0]."', 'now()');";
+                            $sqlorder = "INSERT INTO `user_order`(`item_id`, `user_email`) VALUES ('".$value['Item_ID']."', '".$email[0]."');";
                             $db->query($sqlorder);
                     unset($_SESSION['cart'][$id]);
                     $_SESSION['cart'] = array_values($_SESSION['cart']);
                         }
                     }
                 }
+                echo '<script>window.location = "index.php";</script>';
             }
             else{
                 echo "<script>alert('you should log in first')</script>";
+                echo '<script>window.location = "log_in_sign_up.html";</script>';
             }
+        }else{
+            echo "<script>alert('you should log in first')</script>";
+            echo '<script>window.location = "log_in_sign_up.html";</script>';
         }
-        echo '<script>window.location = "index.php";</script>';
+
         $db->close();
     }
 ?>
