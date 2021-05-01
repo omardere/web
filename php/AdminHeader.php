@@ -8,11 +8,8 @@
 <div class="containerMenu">
     <nav class="log_header">
         <ul>
-            <li class="border_log">
-                <a href="log_in_sign_up.html">Sign Up</a>
-            </li>
-            <li>
-                <a href="log_in_sign_up.html">Log In</a>
+            <li class="border_log" style="border: none; background-color: #ffddcd; border-radius: 20px; padding: 5px 10px;">
+                <a href="log_in_sign_up.html">Logout</a>
             </li>
         </ul>
     </nav>

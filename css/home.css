@@ -35,7 +35,9 @@ nav.log_header ul li{
     list-style: none;
     display: block;
     float: right;
+    background-color: #ffddcd;
     padding: 0 20px 0 20px;
+    border-radius: 20px; padding: 5px 10px;
 }
 .border_log{
     border-left: 1px solid #535353;
@@ -121,7 +123,8 @@ nav.catigoTree button img{
     flex-direction: row;
     right: 60px;
     top: 200px;
-    border: 1px solid black;
+    border: 1px solid #51351e;
+    border-radius: 20px;
 }
 
  .containerItems{
@@ -139,9 +142,11 @@ nav.catigoTree button img{
      object-fit: cover;
      align-items: center;
      overflow: hidden;
-     max-height: 400px;
-     max-width: 250px;
+     max-height: 300px;
+     max-width: 200px;
      margin: 0 10px;
+     box-shadow: 15px 0 35px rgba(0,0,0,0.1), 0 -15px 35px rgba(0,0,0,0.1), 0 15px 35px rgba(0,0,0,0.1);
+     border-radius: 20px;
  }
  .info{
      display: flex;

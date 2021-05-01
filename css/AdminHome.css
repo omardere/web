@@ -91,7 +91,8 @@ div.divider {
     flex-direction: row;
     right: 60px;
     top: 200px;
-    border: 1px solid black;
+    border: 1px solid #51351e;
+    border-radius: 20px;
 }
 
 .containerItems{
@@ -109,9 +110,11 @@ div.divider {
     object-fit: cover;
     align-items: center;
     overflow: hidden;
-    max-height: 400px;
-    max-width: 250px;
+    max-height: 300px;
+    max-width: 150px;
     margin: 0 10px;
+    box-shadow: 15px 0 35px rgba(0,0,0,0.1), 0 -15px 35px rgba(0,0,0,0.1), 0 15px 35px rgba(0,0,0,0.1);
+    border-radius: 20px;
 }
 .info{
     display: flex;
@@ -344,11 +347,29 @@ div.divider {
         width: 100%;
     }
 }
-.Control{
+.Controlcontainer{
     position: absolute;
     right: 2%;
     top: 200px;
     display: flex;
+    flex-flow: column;
+    justify-items: center;
+    align-content: center;
+    height: fit-content;
+    width: 300px;
+    justify-items: center;
+    align-content: center;
+}
+.Add_Control{
+     display: flex;
+     flex-flow: column;
+     justify-items: center;
+     align-content: center;
+     height: fit-content;
+     width: 300px;
+ }
+.Update_Control{
+    display: none;
     flex-flow: column;
     justify-items: center;
     align-content: center;
@@ -381,4 +402,7 @@ input{
 }
 .rad label{
     margin: 0 5px;
+}
+.switch{
+    border-radius: 20px; cursor: pointer;  margin: 0 5px;  padding: 10px 20px; background-color: #faaf8f; color: #51351e;
 }
