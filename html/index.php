@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="../css/home.css"/>
+    <script type="text/javascript" src="../js/home.js"></script>
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
@@ -26,18 +27,23 @@
         session_start();
                try {
                    if (isset($_SESSION['User'])){
-                       if (count($_SESSION['User']) == 0){
-                           echo "<script>document.getElementById('login').style.display = 'none';
-                                         document.getElementById('signup').style.display = 'none';
-                                         document.getElementById('logout').style.display = 'block';
+                       if (count($_SESSION['User']) == 1){
+                           echo "<script>
+                                    sign_in_clicked();
                                 </script>";
                        }
                        else{
-                           echo "<script>document.getElementById('login').style.display = 'block';
-                                         document.getElementById('signup').style.display = 'block';
-                                         document.getElementById('logout').style.display = 'none';
+                           echo "<script>
+                                    log_out_clicked();
                                 </script>";
                        }
+                   }
+                   if (isset($_POST['logout'])){
+                       foreach ($_SESSION['User'] as $key => $value){
+                           $_SESSION['User'] = array_values($_SESSION['User']);
+                           session_destroy();
+                       }
+                       echo '<script>window.location = "index.php";</script>';
                    }
                    if (isset($_POST["Add_To_Cart"])) {
                        if (isset($_SESSION['cart'])){

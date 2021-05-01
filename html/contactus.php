@@ -66,3 +66,25 @@
 </section>
 </body>
 </html>
+<?php
+session_start();
+if (isset($_SESSION['User'])){
+    if (count($_SESSION['User']) == 1){
+        echo "<script>
+                                    sign_in_clicked();
+                                </script>";
+    }
+    else{
+        echo "<script>
+                                    log_out_clicked();
+                                </script>";
+    }
+}
+if (isset($_POST['logout'])){
+    foreach ($_SESSION['User'] as $key => $value){
+        unset($_SESSION['User'][$key]);
+        $_SESSION['User'] = array_values($_SESSION['User']);
+    }
+    echo '<script>window.location = "index.php";</script>';
+}
+?>

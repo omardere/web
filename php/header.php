@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>header</title>
+    <script type="text/javascript" src="../js/home.js"></script>
 </head>
 <body>
     <div class="containerMenu">
+        <form action="header.php" method="post"></form>
         <nav class="log_header">
             <ul>
                 <li id="login" class="border_log">
-                    <a href="log_in_sign_up.html">SignUp</a>
+                    <a onclick="sign_in_clicked()" href="log_in_sign_up.html">SignUp</a>
                 </li>
-                <li id="signup">
-                    <a href="log_in_sign_up.html">LogIn</a>
+                <li  id="signup">
+                    <a onclick="sign_in_clicked()" href="log_in_sign_up.html">LogIn</a>
                 </li>
-                <li id="logout">
-                    <a href="index.php">LogOut</a>
+                <li id="logout" style="display: none;">
+                    <a onclick="log_out_clicked()" href="index.php">LogOut</a>
                     <input type="hidden" name="logout" value="logout">
                 </li>
             </ul>
         </nav>
+        </form>
         <nav class="menu_header">
             <ul>
                 <li>
