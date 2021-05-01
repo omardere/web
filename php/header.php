@@ -8,11 +8,15 @@
     <div class="containerMenu">
         <nav class="log_header">
             <ul>
-                <li class="border_log">
-                    <a href="log_in_sign_up.html">Sign Up</a>
+                <li id="login" class="border_log">
+                    <a href="log_in_sign_up.html">SignUp</a>
                 </li>
-                <li>
-                    <a href="log_in_sign_up.html">Log In</a>
+                <li id="signup">
+                    <a href="log_in_sign_up.html">LogIn</a>
+                </li>
+                <li id="logout">
+                    <a href="index.php">LogOut</a>
+                    <input type="hidden" name="logout" value="logout">
                 </li>
             </ul>
         </nav>

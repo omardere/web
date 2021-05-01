@@ -25,6 +25,20 @@
         <?php
         session_start();
                try {
+                   if (isset($_SESSION['User'])){
+                       if (count($_SESSION['User']) == 0){
+                           echo "<script>document.getElementById('login').style.display = 'none';
+                                         document.getElementById('signup').style.display = 'none';
+                                         document.getElementById('logout').style.display = 'block';
+                                </script>";
+                       }
+                       else{
+                           echo "<script>document.getElementById('login').style.display = 'block';
+                                         document.getElementById('signup').style.display = 'block';
+                                         document.getElementById('logout').style.display = 'none';
+                                </script>";
+                       }
+                   }
                    if (isset($_POST["Add_To_Cart"])) {
                        if (isset($_SESSION['cart'])){
                            $my_Itmes = array_column($_SESSION['cart'], 'Item_ID');

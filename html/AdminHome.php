@@ -29,7 +29,7 @@
     <div class="Controlcontainer">
         <div  style="margin: 0 50px; display: flex; flex-flow: row;">
             <button class="switch" type="button" name="Add"  onclick="Add_div()">Add</button>
-            <button class="switch" name="Update"type="button" onclick="Update_div()">Update</button>
+            <button class="switch" name="Update" type="button" onclick="Update_div()">Update</button>
         </div>
         <form action="AdminHome.php" method="post" enctype="multipart/form-data">
         <div id="Add" class="Add_Control">
@@ -40,12 +40,12 @@
                 <h3>Catigories:</h3>
                 <div style="display: flex; flex-flow: column; font-size: 11px;  width: 100%; margin: 10px 0">
                     <div class="rad">
-                    <input type="radio" id="male" name="Item_catigory" value="T-shirts">
-                    <label for="T-shirts">T-Shirts</label>
+                        <input type="radio" id="male" name="Item_catigory" value="T-shirts">
+                        <label for="T-shirts">T-Shirts</label>
                     </div>
                     <div class="rad">
-                    <input type="radio" id="female" name="Item_catigory" value="Casual-Shoes">
-                    <label for="Casual-Shoes">Casual Shoes</label>
+                        <input type="radio" id="female" name="Item_catigory" value="Casual-Shoes">
+                        <label for="Casual-Shoes">Casual Shoes</label>
                     </div>
                     <div class="rad">
                         <input type="radio" id="other" name="Item_catigory" value="Trousers">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <label style="font-size: 20px">Quantity: </label> <input required type="number" name="Item_quantity" placeholder="Item Quantity" maxlength="20" style="text-align: center; font-size: 15px; margin-bottom: 10px;">
-                <label style="font-size: 20px">Image: </label> <input type="file" required name="Item_image" placeholder="Item image"style="text-align: center; cursor: pointer; font-size: 15px; margin-bottom: 10px;">
+                <label style="font-size: 20px">Image: </label> <input type="file" required name="Item_image" placeholder="Item image" style="text-align: center; cursor: pointer; font-size: 15px; margin-bottom: 10px;">
             </div>
             <button name="AddItem" type="submit" value="AddItem" class="add">Add Item</button>
         </div>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <label style="font-size: 20px">Quantity: </label> <input  type="number" name="UItem_quantity" placeholder="Item Quantity" maxlength="20" style="text-align: center; font-size: 15px; margin-bottom: 10px;">
-                <label style="font-size: 20px">Image: </label> <input type="file"  name="UItem_image" placeholder="Item image"style="text-align: center; cursor: pointer; font-size: 15px; margin-bottom: 10px;">
+                <label style="font-size: 20px">Image: </label> <input type="file"  name="UItem_image" placeholder="Item image" style="text-align: center; cursor: pointer; font-size: 15px; margin-bottom: 10px;">
             </div>
             <button name="Update_Item" type="submit" value="Update_Item" class="add">Update Item</button>
             <input type="hidden" name="Update_Item" value="Update_Item">

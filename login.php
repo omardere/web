@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['email'])&&isset($_POST['pass']))
 {
     $not=0;
@@ -21,7 +22,8 @@ if(isset($_POST['email'])&&isset($_POST['pass']))
                     $not=0;
                     break;
                 }
-                header('Location:html/index.php');
+                $_SESSION['User'][0] = array('email'=>$row['email'], 'city'=>$row['city'], 'adress'=>$row['adress']);
+                echo "<script>window.location = 'html/index.php';</script>";
                 $not=0;
                 break;
             }
