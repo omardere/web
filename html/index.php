@@ -38,13 +38,6 @@
                                 </script>";
                        }
                    }
-                   if (isset($_POST['logout'])){
-                       foreach ($_SESSION['User'] as $key => $value){
-                           $_SESSION['User'] = array_values($_SESSION['User']);
-                           session_destroy();
-                       }
-                       echo '<script>window.location = "index.php";</script>';
-                   }
                    if (isset($_POST["Add_To_Cart"])) {
                        if (isset($_SESSION['cart'])){
                            $my_Itmes = array_column($_SESSION['cart'], 'Item_ID');

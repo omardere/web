@@ -66,13 +66,6 @@ include "../php/cart_cards.php";
                                 </script>";
         }
     }
-    if (isset($_POST['logout'])){
-        foreach ($_SESSION['User'] as $key => $value){
-            unset($_SESSION['User'][$key]);
-            $_SESSION['User'] = array_values($_SESSION['User']);
-        }
-        echo '<script>window.location = "index.php";</script>';
-    }
     ?>
 </div>
 <form action="cart.php" method="post">
@@ -125,14 +118,24 @@ include "../php/cart_cards.php";
         $db=new mysqli('localhost','root','','fashion');
         $q="select * from item";
         $res2=$db->query($q);//pointer of rows
-        while ($row = $res2->fetch_assoc()) {
-            foreach ($_SESSION['cart'] as $id => $value){
-                if ($row['id'] == $value['Item_ID']){
-                    $sql = "UPDATE item SET  `quantites`= ".$value['product_Total_quantity']." WHERE id = ".$value['Item_ID'];
-                    $db->query($sql);
+        $email = array_column($_SESSION['User'],"email");
+        if (isset($_SESSION['User'])){
+            if (count($_SESSION['User']) == 1){
+                while ($row = $res2->fetch_assoc()) {
+                    foreach ($_SESSION['cart'] as $id => $value){
+                        if ($row['id'] == $value['Item_ID']){
+                            $sql = "UPDATE item SET  `quantites`= ".$value['product_Total_quantity']." WHERE id = ".$value['Item_ID'];
+                            $db->query($sql);
+                            $sqlorder = "INSERT INTO `user_order`(`item_id`, `user_email`, `date`) VALUES ('".$value['Item_ID']."', '".$email[0]."', 'now()');";
+                            $db->query($sqlorder);
                     unset($_SESSION['cart'][$id]);
                     $_SESSION['cart'] = array_values($_SESSION['cart']);
+                        }
+                    }
                 }
+            }
+            else{
+                echo "<script>alert('you should log in first')</script>";
             }
         }
         echo '<script>window.location = "index.php";</script>';

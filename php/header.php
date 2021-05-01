@@ -7,7 +7,6 @@
 </head>
 <body>
     <div class="containerMenu">
-        <form action="header.php" method="post"></form>
         <nav class="log_header">
             <ul>
                 <li id="login" class="border_log">
@@ -22,7 +21,6 @@
                 </li>
             </ul>
         </nav>
-        </form>
         <nav class="menu_header">
             <ul>
                 <li>
