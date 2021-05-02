@@ -80,15 +80,14 @@ include "../php/cart_cards.php";
 </body>
 </html>
 <?php
-
-
-    if (isset($_POST["dicrease_quantity"])){
-        if (isset($_SESSION['cart'])){
-            foreach ($_SESSION['cart'] as $id => $value){
-                if ($_POST['product_quantity'] == $value['Item_ID']){
-                    if (1 < $value['product_quantity']){
+try {
+    if (isset($_POST["dicrease_quantity"])) {
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $id => $value) {
+                if ($_POST['product_quantity'] == $value['Item_ID']) {
+                    if (1 < $value['product_quantity']) {
                         $value['product_quantity'] -= 1;
-                        $value['product_Total_quantity']+=1;
+                        $value['product_Total_quantity'] += 1;
                         $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
 
                     }
@@ -96,14 +95,13 @@ include "../php/cart_cards.php";
             }
             echo '<script>window.location = "cart.php";</script>';
         }
-    }
-    elseif (isset($_POST["increase_quantity"])){
-        if (isset($_SESSION['cart'])){
-            foreach ($_SESSION['cart'] as $id => $value){
+    } elseif (isset($_POST["increase_quantity"])) {
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $id => $value) {
                 if ($_POST['product_quantity'] == $value['Item_ID']) {
                     if ($value['product_Total_quantity'] > 0) {
                         $value['product_quantity'] += 1;
-                        $value['product_Total_quantity']-=1;
+                        $value['product_Total_quantity'] -= 1;
                         $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
                         echo '<script>window.location = "cart.php";</script>';
                     } else {
@@ -114,41 +112,38 @@ include "../php/cart_cards.php";
             }
         }
     }
-    if (isset($_POST['buy'])){
-        $counter = 0;
-        $db=new mysqli('localhost','root','','fashion');
-        $q="select * from item";
-        $res2=$db->query($q);//pointer of rows
-        $email = array_column($_SESSION['User'],"email");
+    if (isset($_POST['buy'])) {
+        $db = new mysqli('localhost', 'root', '', 'fashion');
+        $q = "select * from item";
+        $res2 = $db->query($q);//pointer of rows
+        $email = array_column($_SESSION['User'], "email");
         $sDate = date("Y-m-d H:i:s");
-        if (isset($_SESSION['User'])){
-            if (count($_SESSION['User']) == 1){
+        if (isset($_SESSION['User'])) {
+            if (count($_SESSION['User']) == 1) {
                 while ($row = $res2->fetch_assoc()) {
-                    foreach ($_SESSION['cart'] as $id => $value){
-                        if ($row['id'] == $value['Item_ID']){
-                            $sql = "UPDATE item SET  `quantites`= ".$value['product_Total_quantity']." WHERE id = ".$value['Item_ID'];
+                    foreach ($_SESSION['cart'] as $id => $value) {
+                        if ($row['id'] == $value['Item_ID']) {
+                            $sql = "UPDATE item SET  `quantites`= " . $value['product_Total_quantity'] . " WHERE id = " . $value['Item_ID'];
                             $db->query($sql);
-                            $sqlorder = "INSERT INTO `user_order`(`item_id`, `user_email`) VALUES ('".$value['Item_ID']."', '".$email[0]."');";
+                            $sqlorder = "INSERT INTO `user_order`(`item_id`, `user_email`, `quantity`) VALUES ('" . $value['Item_ID'] . "', '" . $email[0] . "', '" . $value['product_quantity'] . "');";
                             $db->query($sqlorder);
                         }
                     }
                 }
-                echo '<script>alert("'.$counter.'")</script>';
+                $db->close();
                 foreach ($_SESSION['cart'] as $id => $value) {
                     unset($_SESSION['cart'][$id]);
-                    $_SESSION['cart'] = array_values($_SESSION['cart']);
                 }
-                echo '<script>window.location = "index.php";</script>';
+                echo '<script>window.location = "cart.php";</script>';
+            } else {
+                echo '<script>alert("you should log in first");</script>';
+                echo '<script>window.location = "cart.php";</script>';
             }
-            else{
-                echo "<script>alert('you should log in first')</script>";
-                echo '<script>window.location = "log_in_sign_up.html";</script>';
-            }
-        }else{
-            echo "<script>alert('you should log in first')</script>";
-            echo '<script>window.location = "log_in_sign_up.html";</script>';
+        } else {
+            echo '<script>alert("you should log in first");
+                                window.location = "cart.php";
+                  </script>';
         }
-
-        $db->close();
     }
+}catch (Exception $e){}
 ?>

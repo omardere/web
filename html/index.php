@@ -42,17 +42,20 @@
                        if (isset($_SESSION['cart'])){
                            $my_Itmes = array_column($_SESSION['cart'], 'Item_ID');
                            if (in_array($_POST['Item_ID'] ,$my_Itmes)) {
-                               echo '<script>window.location = "index.php";</script>';
+                               echo '<script>
+                                             alert("Item allready chosen");
+                                             window.location = "index.php";
+                                     </script>';
                            }else{
                                $totquan = $_POST['product_Total_quantity'] - 1;
                                $count = count($_SESSION['cart']);
                                $_SESSION['cart'][$count]=array('Item_ID'=>$_POST['Item_ID'], 'product_quantity'=>1, 'product_Total_quantity'=> $totquan);
-                               echo '<script>window.location = "index.php";</script>';
+                               echo '<script>alert("Item has selected"); window.location = "index.php";</script>';
                            }
                        }else{
                            $totquan = $_POST['product_Total_quantity'] - 1;
                            $_SESSION['cart'][0]=array('Item_ID'=>$_POST['Item_ID'], 'product_quantity'=>1, 'product_Total_quantity'=>$totquan);
-                           echo '<script>window.location = "index.php";</script>';
+                           echo '<script>alert("Item has selected"); window.location = "index.php";</script>';
                        }
                    }
                    if(isset($_POST['cat_btn'])) {

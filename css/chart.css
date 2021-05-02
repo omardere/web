@@ -1,0 +1,8 @@
+.Chart_Container{
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    right: 32%;
+    top: 20%;
+    background-color: #51351e;
+}
