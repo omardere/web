@@ -115,6 +115,7 @@ include "../php/cart_cards.php";
         }
     }
     if (isset($_POST['buy'])){
+        $counter = 0;
         $db=new mysqli('localhost','root','','fashion');
         $q="select * from item";
         $res2=$db->query($q);//pointer of rows
@@ -129,10 +130,13 @@ include "../php/cart_cards.php";
                             $db->query($sql);
                             $sqlorder = "INSERT INTO `user_order`(`item_id`, `user_email`) VALUES ('".$value['Item_ID']."', '".$email[0]."');";
                             $db->query($sqlorder);
-                    unset($_SESSION['cart'][$id]);
-                    $_SESSION['cart'] = array_values($_SESSION['cart']);
                         }
                     }
+                }
+                echo '<script>alert("'.$counter.'")</script>';
+                foreach ($_SESSION['cart'] as $id => $value) {
+                    unset($_SESSION['cart'][$id]);
+                    $_SESSION['cart'] = array_values($_SESSION['cart']);
                 }
                 echo '<script>window.location = "index.php";</script>';
             }

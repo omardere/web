@@ -19,6 +19,9 @@
                 <a href="../html/AdminContactUS.php">Mail</a>
             </li>
             <li>
+                <a href="../html/order.php">Orders</a>
+            </li>
+            <li>
                 <a href="../html/AdminHome.php">Home</a>
             </li>
         </ul>
