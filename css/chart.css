@@ -4,5 +4,13 @@
     width: 600px;
     right: 32%;
     top: 20%;
-    background-color: #51351e;
+    background-color: #faaf8f;
+}
+.popup_background{
+    background-color: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    display: none;
 }

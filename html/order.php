@@ -28,6 +28,14 @@
 
         }
     </style>
+    <script>
+        function showpopup(){
+            document.getElementById('popup_background').style.display = "block";
+        }
+        function hidepopup(){
+            document.getElementById('popup_background').style.display = "none";
+        }
+    </script>
 </head>
 <body>
 <?php include "../php/AdminHeader.php";?>
@@ -66,6 +74,7 @@ $prices = substr($prices, 0, -1);
     right: 25%;">
         <div style="display: flex; flex-flow: column; text-align: center;">
             <h1 style="margin: 20px 0">Orders</h1>
+            <button type="button" style="position: absolute; right: 0; width: 100px; height: 50px; border-radius: 20px; background-color: #faaf8f; color: #51351e; cursor: pointer; " onclick="showpopup()">Show Chart</button>
             <?php
             $db=new mysqli('localhost','root','','fashion');
             $q="select * from user_order";
@@ -103,46 +112,48 @@ $prices = substr($prices, 0, -1);
         </div>
     </div>
 </section>
-
-<div class="Chart_Container">
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [<?php echo $dates;?>],
-                datasets: [{
-                    label: 'Prices per month',
-                    data: [<?php echo $prices;?>],
-                   backgroundColor: [
-                       'rgba(255, 99, 132, 0.2)',
-                       'rgba(54, 162, 235, 0.2)',
-                       'rgba(255, 206, 86, 0.2)',
-                       'rgba(75, 192, 192, 0.2)',
-                       'rgba(153, 102, 255, 0.2)',
-                       'rgba(255, 159, 64, 0.2)'
-                   ],
-                   borderColor: [
-                       'rgba(255, 99, 132, 1)',
-                       'rgba(54, 162, 235, 1)',
-                       'rgba(255, 206, 86, 1)',
-                       'rgba(75, 192, 192, 1)',
-                       'rgba(153, 102, 255, 1)',
-                       'rgba(255, 159, 64, 1)'
-                   ],
-                   borderWidth: 1
-               }]
-           },
-           options: {
-               scales: {
-                   y: {
-                       beginAtZero: true
+<div class="popup_background" id="popup_background">
+    <div style="right: 600px; top: 150px; position: absolute; cursor: pointer;" onclick="hidepopup()"><h1 style="color: white;">×</h1></div>
+    <div class="Chart_Container" id="Chart_Container">
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [<?php echo $dates;?>],
+                    datasets: [{
+                        label: 'Prices per month',
+                        data: [<?php echo $prices;?>],
+                       backgroundColor: [
+                           'rgba(255, 99, 132, 0.2)',
+                           'rgba(54, 162, 235, 0.2)',
+                           'rgba(255, 206, 86, 0.2)',
+                           'rgba(75, 192, 192, 0.2)',
+                           'rgba(153, 102, 255, 0.2)',
+                           'rgba(255, 159, 64, 0.2)'
+                       ],
+                       borderColor: [
+                           'rgba(255, 99, 132, 1)',
+                           'rgba(54, 162, 235, 1)',
+                           'rgba(255, 206, 86, 1)',
+                           'rgba(75, 192, 192, 1)',
+                           'rgba(153, 102, 255, 1)',
+                           'rgba(255, 159, 64, 1)'
+                       ],
+                       borderWidth: 1
+                   }]
+               },
+               options: {
+                   scales: {
+                       y: {
+                           beginAtZero: true
+                       }
                    }
                }
-           }
-        });
-    </script>
+            });
+        </script>
+    </div>
 </div>
 </body>
 </html>
