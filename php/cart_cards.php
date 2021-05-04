@@ -33,7 +33,7 @@ function get_cards_cart($name, $price, $size, $proimage, $product_ID, $product_q
                 <input type="hidden" name="Item_ID" value="'.$product_ID.'">
             </form>
             <form action="../html/cart.php" method="post">
-                <button class="bt" name="increase_quantity">&#9650;</button>
+                <button  class="bt" name="increase_quantity">&#9650;</button>
                 <span>Quantity: '.$product_quantity.'</span>
                 <input type="hidden" name="product_quantity" value="'.$product_ID.'">
                 <button class="bt" name="dicrease_quantity">&#9660;</button>

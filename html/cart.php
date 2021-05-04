@@ -15,10 +15,11 @@ include "../php/cart_cards.php";
 <div class="cart_Items_container">
     <?php
     $total = 0;
-    if(isset($_SESSION['cart'])) {
-        if (count($_SESSION['cart']) == 0) {
+    if(isset($_SESSION['cart'])){
+        if (count($_SESSION['cart']) == 0){
             echo "<h3 style='text-align: center;'>Cart is Empty.</h3>";
-        } else {
+        }
+        else {
             $db = new mysqli('localhost', 'root', '', 'fashion');
             $q = "select * from item";
             $res = $db->query($q);//pointer of rows
@@ -33,6 +34,7 @@ include "../php/cart_cards.php";
             $db->close();
         }
     }
+
     if (isset($_POST["remove"])) {
         if ($_GET['action'] == 'remove') {
             $db=new mysqli('localhost','root','','fashion');
@@ -72,7 +74,7 @@ include "../php/cart_cards.php";
         <br>
         <h3 style="color: green; background-color: white">😁Paiement when recieving😁</h3>
         <br>
-        <button class="bt1" name="buy" value="buy" style="width: 200px; margin-left: 17%;">Buy !</button>
+        <button type="submit" class="bt1" name="buy" value="buy" style="width: 200px; margin-left: 17%;">Buy !</button>
     </div>
 </form>
 </body>
