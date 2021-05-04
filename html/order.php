@@ -10,6 +10,7 @@
     <link type="text/css" rel="stylesheet" href="../css/AdminHome.css">
     <link rel="stylesheet" href="../css/contactus.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="../css/chart.css" type="text/css" rel="stylesheet">
     <style>
         table{
@@ -28,14 +29,6 @@
 
         }
     </style>
-    <script>
-        function showpopup(){
-            document.getElementById('popup_background').style.display = "block";
-        }
-        function hidepopup(){
-            document.getElementById('popup_background').style.display = "none";
-        }
-    </script>
 </head>
 <body>
 <?php include "../php/AdminHeader.php";?>
@@ -53,9 +46,14 @@ while($row = $res->fetch_assoc()){
     $row22 = $res22->fetch_assoc();
     $price = $row['price'];
     $month=$row22['dates'];
-    $month1 =  strtotime($month); // July
-    $m = date("F",$month1);
-    $orderarray[$m] += $price;
+    $year1 =  strtotime($month); // July
+    $y = date("Y",$year1);
+    echo $_POST['year'];
+    if ($_POST['year'] == $y) {
+        $month1 = strtotime($month); // July
+        $m = date("F", $month1);
+        $orderarray[$m] += $price;
+    }
 }
 $db->close();
 $dates = "";
@@ -74,7 +72,12 @@ $prices = substr($prices, 0, -1);
     right: 25%;">
         <div style="display: flex; flex-flow: column; text-align: center;">
             <h1 style="margin: 20px 0">Orders</h1>
-            <button type="button" style="position: absolute; right: 0; width: 100px; height: 50px; border-radius: 20px; background-color: #faaf8f; color: #51351e; cursor: pointer; " onclick="showpopup()">Show Chart</button>
+            <form action="order.php" method="post">
+            <button type="button"  name="shw" style="position: absolute; right: 0; width: 100px; height: 50px; border-radius: 20px; background-color: #faaf8f; color: #51351e; cursor: pointer; " onclick="showpopup()">Show Chart</button>
+                <h5 style="position: absolute; right: 0px; top: 50px; color: #51351e; cursor: pointer;"> Submit the Year Before Show the Chart:</h5>
+                <input type="submit" style="position: absolute; right: 0px; top: 80px; color: #51351e; cursor: pointer;" >
+            <input id="year" name="year" type="text" value="2021" placeholder="Year" style="position: absolute; right: 50px; top: 80px; color: #51351e; cursor: pointer; ">
+            </form>
             <?php
             $db=new mysqli('localhost','root','','fashion');
             $q="select * from user_order";
@@ -117,41 +120,48 @@ $prices = substr($prices, 0, -1);
     <div class="Chart_Container" id="Chart_Container">
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [<?php echo $dates;?>],
-                    datasets: [{
-                        label: 'Prices per month',
-                        data: [<?php echo $prices;?>],
-                       backgroundColor: [
-                           'rgba(255, 99, 132, 0.2)',
-                           'rgba(54, 162, 235, 0.2)',
-                           'rgba(255, 206, 86, 0.2)',
-                           'rgba(75, 192, 192, 0.2)',
-                           'rgba(153, 102, 255, 0.2)',
-                           'rgba(255, 159, 64, 0.2)'
-                       ],
-                       borderColor: [
-                           'rgba(255, 99, 132, 1)',
-                           'rgba(54, 162, 235, 1)',
-                           'rgba(255, 206, 86, 1)',
-                           'rgba(75, 192, 192, 1)',
-                           'rgba(153, 102, 255, 1)',
-                           'rgba(255, 159, 64, 1)'
-                       ],
-                       borderWidth: 1
-                   }]
-               },
-               options: {
-                   scales: {
-                       y: {
-                           beginAtZero: true
-                       }
-                   }
-               }
-            });
+            function showpopup(){
+                document.getElementById('popup_background').style.display = "block";
+                var txt = document.getElementById("year").value;
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [<?php echo $dates;?>],
+                        datasets: [{
+                            label: txt,
+                            data: [<?php echo $prices;?>],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+            function hidepopup(){
+                document.getElementById('popup_background').style.display = "none";
+            }
         </script>
     </div>
 </div>

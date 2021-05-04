@@ -16,8 +16,10 @@
                     <a onclick="sign_in_clicked()" href="log_in_sign_up.html">LogIn</a>
                 </li>
                 <li id="logout" style="display: none;">
+                    <form action="../html/index.php" method="post">
                     <a onclick="log_out_clicked()" href="index.php">LogOut</a>
                     <input type="hidden" name="logout" value="logout">
+                    </form>
                 </li>
             </ul>
         </nav>
