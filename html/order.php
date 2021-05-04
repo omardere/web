@@ -76,7 +76,7 @@ $prices = substr($prices, 0, -1);
             <button type="button"  name="shw" style="position: absolute; right: 0; width: 100px; height: 50px; border-radius: 20px; background-color: #faaf8f; color: #51351e; cursor: pointer; " onclick="showpopup()">Show Chart</button>
                 <h5 style="position: absolute; right: 0px; top: 50px; color: #51351e; cursor: pointer;"> Submit the Year Before Show the Chart:</h5>
                 <input type="submit" style="position: absolute; right: 0px; top: 80px; color: #51351e; cursor: pointer;" >
-            <input id="year" name="year" type="text" value="2021" placeholder="Year" style="position: absolute; right: 50px; top: 80px; color: #51351e; cursor: pointer; ">
+            <input id="year" name="year" type="text"  placeholder="Year" style="position: absolute; right: 50px; top: 80px; color: #51351e; cursor: pointer; ">
             </form>
             <?php
             $db=new mysqli('localhost','root','','fashion');
@@ -129,7 +129,7 @@ $prices = substr($prices, 0, -1);
                     data: {
                         labels: [<?php echo $dates;?>],
                         datasets: [{
-                            label: txt,
+                            label: 'Sales per Year: '+txt,
                             data: [<?php echo $prices;?>],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
