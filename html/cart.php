@@ -68,6 +68,9 @@ include "../php/cart_cards.php";
     }
     ?>
 </div>
+<div id="pop" style="display: none; text-align: center; position: absolute; background-color: rgba(0,0,0,0.5); width: 100%; height: 100%; z-index: 1000;">
+    <h1 style="position: absolute; right: 50%; top: 50%;">Test Test</h1>
+</div>
 <form action="cart.php" method="post">
     <div class="Prices">
         <h3>Total = <span class="sp1">$<?php echo $total;?></span></h3>
@@ -89,7 +92,6 @@ try {
                         $value['product_quantity'] -= 1;
                         $value['product_Total_quantity'] += 1;
                         $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
-
                     }
                 }
             }
@@ -105,8 +107,7 @@ try {
                         $_SESSION['cart'][$id] = array('Item_ID' => $value['Item_ID'], 'product_quantity' => $value['product_quantity'], 'product_Total_quantity' => $value['product_Total_quantity']);
                         echo '<script>window.location = "cart.php";</script>';
                     } else {
-                        echo '<script>alert("No enough items in the store.";</script>';
-                        echo '<script>window.location = "cart.php";</script>';
+                        echo '<script>alert("No enough items in the store."; window.location = "cart.php";</script>';
                     }
                 }
             }
@@ -116,10 +117,10 @@ try {
         $db = new mysqli('localhost', 'root', '', 'fashion');
         $q = "select * from item";
         $res2 = $db->query($q);//pointer of rows
-        $email = array_column($_SESSION['User'], "email");
         $sDate = date("Y-m-d H:i:s");
         if (isset($_SESSION['User'])) {
             if (count($_SESSION['User']) == 1) {
+                $email = array_column($_SESSION['User'], "email");
                 while ($row = $res2->fetch_assoc()) {
                     foreach ($_SESSION['cart'] as $id => $value) {
                         if ($row['id'] == $value['Item_ID']) {
@@ -134,14 +135,13 @@ try {
                 foreach ($_SESSION['cart'] as $id => $value) {
                     unset($_SESSION['cart'][$id]);
                 }
-                echo '<script>window.location = "cart.php";</script>';
             } else {
                 echo '<script>alert("you should log in first");</script>';
-                echo '<script>window.location = "cart.php";</script>';
+                echo '<script> window.location = "cart.php";</script>';
             }
         } else {
             echo '<script>alert("you should log in first");
-                                window.location = "cart.php";
+                                window.location = "log_in_sign_up.html";
                   </script>';
         }
     }

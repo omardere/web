@@ -88,15 +88,6 @@
                    }
                     $db->close();
                 }catch (Exception $e){}
-
-
-        if (isset($_GET["logout"])) {
-                foreach ($_SESSION['User'] as $key => $value) {
-                        unset($_SESSION['User'][$key]);
-                        $_SESSION['User'] = array_values($_SESSION['User']);
-                    }
-            echo '<script>window.location = "index.php";</script>';
-        }
         ?>
     </div>
 </body>
