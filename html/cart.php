@@ -135,6 +135,7 @@ try {
                 foreach ($_SESSION['cart'] as $id => $value) {
                     unset($_SESSION['cart'][$id]);
                 }
+                echo '<script> window.location = "cart.php";</script>';
             } else {
                 echo '<script>alert("you should log in first");</script>';
                 echo '<script> window.location = "cart.php";</script>';
