@@ -6,7 +6,6 @@
     font-family: 'PT Serif', serif;
 }
 .contact{
-    position: absolute;
     padding: 50px 100px;
     display: flex;
     justify-content: center;
