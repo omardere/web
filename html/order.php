@@ -8,7 +8,7 @@
     <title>Document</title>
     <script type="text/javascript" src="../js/AdminHome.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/AdminHome.css">
-    <link rel="stylesheet" href="../css/contactus.css"/>
+    <link rel="stylesheet" href="../css/order.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="../css/chart.css" type="text/css" rel="stylesheet">
@@ -67,17 +67,16 @@ $prices = substr($prices, 0, -1);
 ?>
 
 
-<section  class="contact" style="
-    top: 15%;
-    right: 25%;">
-        <div style="display: flex; flex-flow: column; text-align: center;">
-            <h1 style="margin: 20px 0">Orders</h1>
+<section  class="contact" style="top: 15%;right: 25%;">
+        <div style="display: flex; position: relative; flex-flow: column; text-align: center; width: 400px; height: 100px ">
             <form action="order.php" method="post">
-            <button type="button"  name="shw" style="position: absolute; right: 0; width: 100px; height: 50px; border-radius: 20px; background-color: #faaf8f; color: #51351e; cursor: pointer; " onclick="showpopup()">Show Chart</button>
-                <h5 style="position: absolute; right: 0px; top: 50px; color: #51351e; cursor: pointer;"> Submit the Year Before Show the Chart:</h5>
-                <input type="submit" style="position: absolute; right: 0px; top: 80px; color: #51351e; cursor: pointer;" >
-            <input id="year" name="year" type="text"  placeholder="Year" style="position: absolute; right: 50px; top: 80px; color: #51351e; cursor: pointer; ">
+                <h5 style="position: absolute; right: 0px; top: 10px; color: #51351e; cursor: pointer;"> Submit the Year Before Show the Chart:</h5>
+                <input type="submit" style="position: absolute; right: 0px; top: 50px; color: #51351e; cursor: pointer;" >
+                <input id="year" name="year" type="text"  placeholder="Year" style="position: absolute; right: 50px; top: 50px; color: #51351e; cursor: pointer; ">
+                <button type="button"  name="shw" style="position: absolute; right: 0; top:80px; width: 100px; height: 50px; border-radius: 20px; background-color: #faaf8f; color: #51351e; cursor: pointer; " onclick="showpopup(<?php echo $dates;?>, <?php echo $prices;?>)">Show Chart</button>
             </form>
+        </div>
+    <h1 style="margin: 20px 0">Orders</h1>
             <?php
             $db=new mysqli('localhost','root','','fashion');
             $q="select * from user_order";
@@ -112,15 +111,13 @@ $prices = substr($prices, 0, -1);
             }
             echo "</table>";
             ?>
-        </div>
-    </div>
 </section>
 <div class="popup_background" id="popup_background">
     <div style="right: 600px; top: 150px; position: absolute; cursor: pointer;" onclick="hidepopup()"><h1 style="color: white;">×</h1></div>
     <div class="Chart_Container" id="Chart_Container">
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
-            function showpopup(){
+            function showpopup($dates, $prices){
                 document.getElementById('popup_background').style.display = "block";
                 var txt = document.getElementById("year").value;
                 var ctx = document.getElementById('myChart').getContext('2d');

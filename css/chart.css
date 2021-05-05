@@ -7,6 +7,8 @@
     background-color: #faaf8f;
 }
 .popup_background{
+    top: 0;
+    right: 0;
     background-color: rgba(0,0,0,0.5);
     height: 100%;
     width: 100%;
