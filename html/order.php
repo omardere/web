@@ -79,32 +79,26 @@ $prices = substr($prices, 0, -1);
     <h1 style="margin: 20px 0">Orders</h1>
             <?php
             $db=new mysqli('localhost','root','','fashion');
-            $q="select * from user_order";
-            $q1="select email, city, adress from user_order, users where user_order.user_email = users.email";
-            $q2="select id, price from user_order, item where user_order.item_id = item.id";
-            $res=$db->query($q);//pointer of rows
+            $q1="select quantity ,dates ,id, price,email, city, adress from user_order, users, item where (user_order.user_email = users.email AND user_order.item_id = item.id) order by dates DESC;";
             $res1 = $db->query($q1);
-            $res2 = $db->query($q2);
             echo "<table>";
             echo "<tr><th>Email:</th><th>City:</th><th>Adress:</th><th>Item ID:</th><th>Item Price:</th><th>Item quantity:</th><th>Date:</th></tr>";
             for($i=0;$i<$res->num_rows;$i++) {
-                $row = $res->fetch_assoc();//fetch new row
                 $row1 = $res1->fetch_assoc();
-                $row2 = $res2->fetch_assoc();
                 echo "<tr><td>";
-                echo $row['user_email'];
+                echo $row1['email'];
                 echo "</td><td>";
                 echo $row1['city'];
                 echo "</td><td>";
                 echo $row1['adress'];
                 echo "</td><td>";
-                echo $row['item_id'];
+                echo $row1['id'];
                 echo "</td><td>";
-                echo $row2['price'];
+                echo $row1['price'];
                 echo "</td><td>";
-                echo $row['quantity'];
+                echo $row1['quantity'];
                 echo "</td><td>";
-                echo $row['dates'];
+                echo $row1['dates'];
                 echo "</td><td>";
                 echo "";
                 echo "</td></tr>";
